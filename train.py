@@ -216,6 +216,13 @@ def train():
     trainer.train()
     trainer.save_state()
     trainer.save_model(output_dir=training_args.output_dir)
+    trainer.save_model('finetuned_MedQuad')
+
+    #model = AutoModelForCausalLM.from_pretrained('finetuned_MedQuad')
+
+    #Saving the Model on huggingface
+    token = "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"
+    trainer.push_to_hub("Amirkid/MedQuad-opt6.7b", use_auth_token=token)
 
 
 if __name__ == "__main__":
