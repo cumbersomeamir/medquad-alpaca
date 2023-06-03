@@ -222,7 +222,7 @@ def train():
 
     #Saving the Model on huggingface
     token = "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"
-    trainer.push_to_hub("Amirkid/MedQuad-opt6.7b", token)
+    trainer.push_to_hub("Amirkid/MedQuad-opt6.7b", use_auth_token=token)
 
 
 if __name__ == "__main__":
