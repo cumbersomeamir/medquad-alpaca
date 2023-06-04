@@ -18,7 +18,8 @@ from dataclasses import dataclass, field
 from typing import Dict, Optional, Sequence
 
 import torch
-import transformers
+import transformers 
+from transformers import AutoModelForCausalLM
 import utils
 from torch.utils.data import Dataset
 from transformers import Trainer
