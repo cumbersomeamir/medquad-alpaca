@@ -19,7 +19,7 @@ from typing import Dict, Optional, Sequence
 
 import torch
 import transformers 
-from transformers import AutoModelForCausalLM
+from transformers import AutoModelForCausalLM, AutoTokenizer
 import utils
 from torch.utils.data import Dataset
 from transformers import Trainer
@@ -218,12 +218,13 @@ def train():
     trainer.save_state()
     trainer.save_model(output_dir=training_args.output_dir)
     trainer.save_model('finetuned_MedQuad')
+    model.save_pretrained("finetuned_MedQuad1")
 
-    model = AutoModelForCausalLM.from_pretrained('finetuned_MedQuad')
+    #model = AutoModelForCausalLM.from_pretrained('finetuned_MedQuad')
 
     #Saving the Model on huggingface
     token = "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"
-    model.push_to_hub("Amirkid/MedQuad-opt6.7b", use_auth_token=token)
+    model.push_to_hub("Amirkid/llama7b-alpaca-medquad", use_auth_token=token)
 
 
 if __name__ == "__main__":
